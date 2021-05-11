@@ -11,6 +11,7 @@ export const Container = styled.button`
     font-size: 14px;
     align-items: center;
     padding: 10px;
+    padding-right: 30px;
     border-radius: 30px;
     transition: 0.2s background;
 

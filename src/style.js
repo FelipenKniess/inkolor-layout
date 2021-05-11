@@ -2,8 +2,8 @@
 export const ContainerInkolorPremium = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-top:80px;
+    margin-left: 370px;
 
     div {
         max-width: 342px;
@@ -39,13 +39,16 @@ export const ContainerInkolorPremium = styled.div`
 
 export const ContainerDiscount = styled.div`
     display: flex;
-    justify-content: center;
     position: relative;
+    height: 350px;
+    margin-top: 50px;
     z-index: 1;
+    margin-left: 370px;
 
     .contact {
         color: #EC008C;
-        letter-spacing: 1px;
+        font-size: 12px;
+        letter-spacing: 2px;
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -69,14 +72,19 @@ export const ContainerDiscount = styled.div`
     .desc-discount {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         margin-left: 150px;
         margin-top: 70px;
         color: #515151;
         line-height: 30px;
 
-        svg {
-            color: #EC008C
+        div {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            width: 20px;
+            margin-right: 15px;
         }
     }
 
@@ -89,5 +97,40 @@ export const ContainerDiscount = styled.div`
         color: #F5F5F5;
         font-weight: 900;
         overflow: hidden;
+    }
+`
+
+export const ContainerDiscoverRange = styled.div`
+    display: flex;
+    background: linear-gradient(327.12deg, #000000 8.82%, #434343 93.13%);
+    flex-direction: column;
+    justify-content: center;
+
+    div {
+        margin-left: 370px;
+        max-width: 440px;
+        margin-top: 150px;
+
+        .type-toner {
+            color: #FFD400;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        h2 {
+            color: #FFF;
+            font-weight: 900;
+            font-size: 52px;
+        }
+
+        strong {
+            display: block;
+            font-weight:bold;
+            margin-bottom: 25px;
+        }
+        strong,p {
+            color: #FFF;
+            font-size: 17px;
+        }
     }
 `
