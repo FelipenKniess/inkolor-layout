@@ -1,4 +1,5 @@
 ﻿import styled from 'styled-components';
+import {shade} from 'polished'
 
 export const Container = styled.button`
     display: flex;
@@ -11,7 +12,11 @@ export const Container = styled.button`
     align-items: center;
     padding: 10px;
     border-radius: 30px;
+    transition: 0.2s background;
 
+    &:hover {
+        background: ${shade(0.2, '#EC008C')}
+    }
     div {
         display: flex;
         align-items: center;
