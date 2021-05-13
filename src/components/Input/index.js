@@ -1,5 +1,5 @@
 ﻿import React, { InputHTMLAttributes, useEffect, useRef, useCallback, useState} from 'react';
-import { Container, Error} from './styles';
+import { Container, Error, MessageError} from './styles';
 import {FiAlertCircle} from 'react-icons/fi';
 import { useField } from '@unform/core';
 
@@ -28,8 +28,8 @@ const Input = ({name, ...rest}) => {
    }, []);
 
     return(
+    <>
        <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
-           { Icon && <Icon size={20}/> }
            <input
                onFocus={handleInputFocus}
                onBlur={handleInputBlur}
@@ -43,6 +43,8 @@ const Input = ({name, ...rest}) => {
                </Error>
            )}
        </Container>
+       {error && <MessageError>{error}</MessageError>}
+    </>
     )
 }
 

@@ -1,13 +1,14 @@
 ﻿﻿import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-    background: #232129;
+    background: #FFF;
     display:flex;
     width: 100%;
-    padding: 16px;
+    padding: 20px;
     border-radius: 10px;
-    border: 2px solid #232129;
-    color: #666360;
+    color: #000;
+    border: 1px solid #FFF;
+
     ${(props) => props.isErrored &&
         css`
             border-color: #c53030;
@@ -17,20 +18,20 @@ export const Container = styled.div`
         margin-right: 16px;
         ${(props) => props.isFilled &&
             css`
-                color: #ff9000;
+                color: #000;
             `
         }
     }
     ${(props) => props.isFocused &&
         css`
-            border-color: #ff9000;
-            color: #ff9000;
+            border-color: #000;
+            color: #000;
         `
     }
     input {
         flex: 1;
         background: transparent;
-        color: #fff;
+        color: #000;
         border: 0;
         &::placeholder {
             color: #666360;
@@ -48,4 +49,9 @@ export const Error = styled.div`
             border-color: #c53030 transparent;
         }
   }
+`
+export const MessageError = styled.span`
+    color: #c53030;
+    display: block;
+    margin-bottom: 10px;
 `

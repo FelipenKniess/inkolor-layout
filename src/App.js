@@ -1,9 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef, useCallback} from 'react';
 import Aos from 'aos';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
+
 import 'aos/dist/aos.css';
 import Header from './components/Header';
 import Button from '../src/components/Button';
 import IconContainer from '../src/components/IconContainer';
+import Input from '../src/components/Input'
+
+import getValidationErrors from './utils/getValidationErrors';
 
 import imgIconDiscount from './assets/images/iconDiscount.svg'
 import ImgDone from './assets/images/done.svg'
@@ -16,7 +22,7 @@ import ImgVisit2 from '../src/assets/images/item2visit.svg'
 import ImgVisit3 from '../src/assets/images/item3visit.svg'
 import ImgIconVisit from '../src/assets/images/iconvisit.svg'
 import ImgToner from '../src/assets/images/toner.png';
-
+import ImgBePart from '../src/assets/images/backgroundBePart.png';
 
 import {
   ContainerInkolorPremium,
@@ -24,16 +30,39 @@ import {
   ContainerDiscoverRange,
   ContainerVisitUs,
   ContainerToner,
-  ContainerQuality
+  ContainerBePartOf
 } from './style';
 
 import {FiArrowDown} from 'react-icons/fi';
 
-
 const App = () => {
 
   useEffect(() => {
-    Aos.init({duration: 1})
+    Aos.init({duration: 2000})
+  }, [])
+
+  const formRef = useRef(null)
+  const handleSubmit = useCallback(async (data) => {
+    try {
+      formRef.current.setErrors({})
+
+      const schema = Yup.object().shape({
+        firma: Yup.string().required(
+          'Firma obrigatória'
+        ),
+        nome: Yup.string().required('Nome Obrigatório'),
+        email: Yup.string().required('Email Obrigatório'),
+      })
+
+      await schema.validate(data, {
+        abortEarly: false
+      })
+
+      alert('Cadastrado!');
+    } catch (err) {
+      const errors = getValidationErrors(err)
+      formRef.current.setErrors(errors)
+    }
   }, [])
 
   return (
@@ -80,7 +109,7 @@ const App = () => {
         </div>
       </ContainerDiscount>
 
-      <ContainerDiscoverRange>
+      <ContainerDiscoverRange data-aos="fade-up">
         <div className="desc-discover">
           <span className="type-toner">+ 1.000 TONERSORTEN</span>
           <h2>Entdecken Sie unser komplettes Sortiment</h2>
@@ -94,7 +123,7 @@ const App = () => {
         </div>
       </ContainerDiscoverRange>
 
-      <ContainerVisitUs>
+      <ContainerVisitUs data-aos="fade-up">
         <div className="desc-visit">
           <IconContainer>
             <img src={ImgIconVisit} alt="IconVisit" />
@@ -116,7 +145,7 @@ const App = () => {
             </div>
           </div>
           <div className="item-carac">
-            <span>99.8% pünktliche Lieferungen</span>
+            <span>99.8% pünktli""che Lieferungen</span>
             <div>
               <img src={ImgVisit2} alt="Visit 2" />
             </div>
@@ -129,8 +158,10 @@ const App = () => {
           </div>
         </div>
       </ContainerVisitUs>
-      <ContainerToner>
-        <img src={ImgToner} alt="Toner" />
+      <ContainerToner data-aos="fade-up">
+        <div className="img-tonner">
+          <img src={ImgToner} alt="Toner" />
+        </div>
         <div className="desc-toner">
           <span>Risikofrei und bewähr</span>
           <h2>Mit Inkolor sind Sie auf der sicheren Seite</h2>
@@ -151,36 +182,29 @@ const App = () => {
         </div>
       </ContainerToner>
 
-      {/* <ContainerQuality>
-        <IconContainer>
-          <img src={ImgIconQuality} alt="" />
-        </IconContainer>
-        <div className="desc-quality">
-          <h2>Optimale Druckqualität</h2>
-          <p>Zuverlässig und konsistent von der ersten bis zu letzten Seite.</p>
-          <div className="items-quality">
-            <div className="item-quality">
-              <img src={ImgIconQuality1} alt="" />
-              <span>Höchste Auflösung</span>
-            </div>
-            <div className="item-quality">
-              <img src={ImgIconQuality2} alt="" />
-              <span>Lichtecht</span>
-            </div>
-            <div className="item-quality">
-              <img src={ImgIconQuality3} alt="" />
-              <span>Präzise Details</span>
-            </div>
-            <div className="item-quality">
-              <img src={ImgIconQuality4} alt="" />
-              <span>Brillante Farben</span>
-            </div>
-          </div>
+      <ContainerBePartOf data-aos="fade-up">
+        <div className="desc-bepart">
+          <h2>Werden Sie Teil unseres Erfolgs</h2>
+          <p>Wir suchen ständig nach neuen Vertriebspartnern mit Erfahrung im Druckerzubehörmarkt.</p>
+          <strong>Kontaktieren Sie uns!</strong>
+          <img src={ImgBePart} alt="inkolor" />
         </div>
-        <div className="image-quality">
-          <img src={ImgBannerQuality} alt="Quality" />
-        </div>
-      </ContainerQuality> */}
+
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <label htmlFor="firma">Firma:</label>
+          <Input name="firma" type="text"/>
+
+          <label htmlFor="nome">Nome:</label>
+          <Input name="nome" type="text"/>
+
+          <label htmlFor="email">email:</label>
+          <Input name="email" type="email"/>
+
+          <button type="submit">
+            Enviar
+          </button>
+        </Form>
+      </ContainerBePartOf>
     </>
   );
 }

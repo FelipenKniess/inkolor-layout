@@ -1,13 +1,20 @@
 ﻿import styled from 'styled-components';
 
+const responsiveMobile = 'max-width: 1000px';
+
 export const ContainerInkolorPremium = styled.div`
     display: flex;
-    position: relative;
     margin-top:80px;
     align-items: center;
     justify-content: center;
-    //margin-left: 370px;
     margin-bottom: 100px;
+
+    @media(${responsiveMobile}) {
+        flex-direction: column;
+         img {
+             margin-top: 20px;
+         }
+    }
 
     .header-inkolor {
         max-width: 342px;
@@ -23,6 +30,10 @@ export const ContainerInkolorPremium = styled.div`
             font-weight: 900;
             font-size: 80px;
             color: #000000;
+
+            @media(${responsiveMobile}) {
+                font-size: 60px;
+            }
         }
 
         p {
@@ -51,6 +62,9 @@ export const ContainerDiscount = styled.div`
     z-index: 1;
     margin-bottom: 200px;
 
+    @media(${responsiveMobile}) {
+        flex-direction: column;
+    }
 
     .contact {
         color: #EC008C;
@@ -58,6 +72,11 @@ export const ContainerDiscount = styled.div`
         letter-spacing: 2px;
         text-transform: uppercase;
         font-weight: bold;
+
+        @media(${responsiveMobile}) {
+            margin-top: 30px;
+            display: block
+        }
     }
 
     h2 {
@@ -74,6 +93,7 @@ export const ContainerDiscount = styled.div`
 
     .title-discount {
         margin-left: 50px;
+
     }
 
     .desc-discount {
@@ -83,6 +103,10 @@ export const ContainerDiscount = styled.div`
         margin-top: 70px;
         color: #515151;
         line-height: 30px;
+
+        @media(${responsiveMobile}) {
+            margin-left: inherit;
+        }
 
         div {
             display: flex;
@@ -105,21 +129,35 @@ export const ContainerDiscount = styled.div`
         color: #F5F5F5;
         font-weight: 900;
         overflow: hidden;
+
+        @media(${responsiveMobile}) {
+            display:none;
+        }
     }
 `
 
 export const ContainerDiscoverRange = styled.div`
     display: flex;
     background: linear-gradient(327.12deg, #000000 8.82%, #434343 93.13%);
-    flex-direction: row;
     position: relative;
     height: 700px;
     z-index: -1;
+
+    @media(${responsiveMobile}) {
+        flex-direction: column;
+        height: inherit;
+    }
 
     .desc-discover {
         margin-left: 370px;
         max-width: 440px;
         margin-top: 150px;
+
+        @media(${responsiveMobile}) {
+            margin-left: inherit;
+            margin-bottom: 150px;
+        }
+
 
         .type-toner {
             color: #FFD400;
@@ -131,6 +169,10 @@ export const ContainerDiscoverRange = styled.div`
             color: #FFF;
             font-weight: 900;
             font-size: 52px;
+
+            @media(${responsiveMobile}) {
+              font-size: 38px;
+            }
         }
 
         strong {
@@ -144,6 +186,9 @@ export const ContainerDiscoverRange = styled.div`
         }
     }
     .img-discover {
+        @media(${responsiveMobile}) {
+            display:none;
+        }
         img {
             width: 100%;
             height: 100%;
@@ -155,6 +200,10 @@ export const ContainerVisitUs = styled.div`
     display: flex;
     //margin-left: 370px;
     justify-content: center;
+
+    @media(${responsiveMobile}) {
+        flex-direction: column;
+    }
     .desc-visit {
         max-width: 441px;
         margin-top: -100px;
@@ -163,6 +212,10 @@ export const ContainerVisitUs = styled.div`
             color:  #EC008C;
             font-size: 52px;
             font-weight: 900;
+
+            @media(${responsiveMobile}) {
+                font-size: 32px;
+            }
         }
 
         strong {
@@ -177,6 +230,10 @@ export const ContainerVisitUs = styled.div`
         }
     }
     .img-phone {
+        @media(${responsiveMobile}) {
+            display:none;
+        }
+
         z-index: 1;
         margin-top: -140px;
     }
@@ -186,14 +243,18 @@ export const ContainerVisitUs = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 490px;
-        height: 490px;
+        width: 190px;
+        height: 190px;
         margin-left: -280px;
         margin-top: 250px;
         background: #EC008C;
         border-radius: 50%;
         font-size: 26px;
         font-weight: 700;
+
+        @media(${responsiveMobile}) {
+            display: none;
+        }
 
         .item-carac {
             display: flex;
@@ -230,6 +291,16 @@ export const ContainerToner = styled.div`
     align-items: center;
     justify-content: center;
 
+    .img-tonner {
+        img {
+            width: 100%;
+
+            @media(${responsiveMobile}) {
+                display: none;
+            }
+
+        }
+    }
     .desc-toner {
         width: 480px;
         span {
@@ -238,12 +309,20 @@ export const ContainerToner = styled.div`
             letter-spacing: 2px;
             color: #EC008C;
             text-transform: uppercase;
+            @media(${responsiveMobile}) {
+                display:block;
+                margin-top: 25px;
+            }
         }
 
         h2 {
             font-weight: 900;
             font-size: 52px;
             color: #000000;
+            @media(${responsiveMobile}) {
+                font-size: 32px;
+            }
+
         }
 
         .carac-toner{
@@ -261,45 +340,86 @@ export const ContainerToner = styled.div`
         }
     }
 `
-
-export const ContainerQuality = styled.div`
-    display: flex;
+export const ContainerBePartOf = styled.div`
+    display:flex;
     justify-content: center;
-    align-items: center;
+    background: #F5F5F5;
+    padding-top: 30px;
 
-    .desc-quality {
-        margin-left: 100px;
+    @media(${responsiveMobile}) {
+        flex-direction: column;
+    }
+
+    .desc-bepart {
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        width: 500px;
+
+        @media(${responsiveMobile}) {
+            width: inherit;
+            align-items: center;
+        }
 
         h2 {
-            font-weight: 900;
+            color:  #000;
             font-size: 52px;
-            color: #000000;
+            font-weight: 900;
+
+            @media(${responsiveMobile}) {
+                font-size: 32px;
+                text-align: center;
+            }
         }
 
-        p {
+        p, strong {
+            color: #515151;
+            margin-top: 15px;
             font-size: 16px;
             font-weight: 400;
-            color: #515151;
+
+            @media(${responsiveMobile}) {
+                text-align: center;
+            }
         }
 
-        .items-quality {
-            display: grid;
+        strong {
+            font-weight: bold;
+        }
 
-            span {
-                color: #515151;
-                font-size: 18px;
-            }
-
-            .item-quality {
-                width: 200px;
+        @media(${responsiveMobile}) {
+            img {
+                display: none;
             }
         }
     }
 
+    form{
+        width: 490px;
+        margin-left: 50px;
 
-    .image-quality {
-        img {
-            border-radius: 50%;
+        @media(${responsiveMobile}) {
+            width: 200px;
+        }
+
+        label {
+            color: #343A40;
+            font-size: 16px;
+            margin-top: 20px;
+            display:block;
+        }
+
+        button {
+            width: 100%;
+            background: #00954D;
+            color: #FFF;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+
+            &:hover {
+
+            }
         }
     }
 `
